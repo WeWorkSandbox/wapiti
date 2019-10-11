@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApiResponse renders with rest 1`] = `
+<div
+  className="response col regular-font"
+>
+  <div
+    className="title"
+  >
+    RESPONSE
+  </div>
+  <div
+    className="resp-head {index===0?'top-gap':'divider'}"
+  >
+    <span
+      className="resp-status"
+    >
+      200
+      :
+    </span>
+    <span
+      className="resp-descr"
+    >
+      description
+    </span>
+  </div>
+  <div
+    className="tab-panel col"
+    style={
+      Object {
+        "borderWidth": "0",
+        "minHeight": "200px",
+      }
+    }
+  >
+    <div
+      className="tab-buttons row"
+      id="200_application/json_tab-buttons"
+      onClick={[Function]}
+    >
+      <button
+        className="tab-btn active"
+        id="200_application/json_example"
+      >
+        EXAMPLE
+      </button>
+      <button
+        className="tab-btn"
+        id="200_application/json_model"
+      >
+        MODEL
+      </button>
+      <div
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "alignSelf": "center",
+            "fontSize": "var(--small-font-size)",
+          }
+        }
+      >
+         
+        application/json
+         
+      </div>
+    </div>
+    <div
+      className="tab-content col"
+      id="200_application/json_example"
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <JsonTree
+        data={
+          Object {
+            "id": 0,
+            "name": "string",
+            "tag": "string",
+          }
+        }
+      />
+    </div>
+    <div
+      className="tab-content col"
+      id="200_application/json_model"
+      style={
+        Object {
+          "display": "none",
+          "flex": 1,
+        }
+      }
+    >
+      <SchemaTree
+        data={
+          Object {
+            "id*": "integer int64~|~",
+            "name*": "string~|~",
+            "tag": "string~|~",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

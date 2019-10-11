@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Endpoint renders with rest 1`] = `
+<div
+  className="m-endpoint regular-font GET collapsed"
+>
+  <div
+    className="head GET collapsed"
+    onClick={[Function]}
+  >
+    <div
+      className="method GET"
+    >
+       
+      GET
+       
+    </div>
+    <div
+      className="path "
+    >
+       
+      /test
+       
+    </div>
+    <div
+      className="only-large-screen"
+      style={
+        Object {
+          "flex": "1",
+          "minWidth": "60px",
+        }
+      }
+    />
+    <div
+      className="m-markdown-small descr"
+    >
+       
+      <DangerousHTML
+        className=""
+        html="<p>summary</p>
+"
+        tagName="div"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Endpoint renders with rest expanded 1`] = `
+<div
+  className="m-endpoint regular-font GET expanded"
+>
+  <div
+    className="head GET expanded"
+    onClick={[Function]}
+  >
+    <div
+      className="method GET"
+    >
+       
+      GET
+       
+    </div>
+    <div
+      className="path "
+    >
+       
+      /test
+       
+    </div>
+    <div
+      className="only-large-screen"
+      style={
+        Object {
+          "flex": "1",
+          "minWidth": "60px",
+        }
+      }
+    />
+    <div
+      className="m-markdown-small descr"
+    >
+       
+      <DangerousHTML
+        className=""
+        html="<p>summary</p>
+"
+        tagName="div"
+      />
+    </div>
+  </div>
+  <div
+    className="body GET"
+  >
+    <div
+      className="summary"
+    >
+      <div
+        className="m-markdown title"
+      >
+        <DangerousHTML
+          className=""
+          html="<p>summary</p>
+"
+          tagName="div"
+        />
+      </div>
+      <div
+        className="m-markdown"
+      >
+        <DangerousHTML
+          className=""
+          html="<p>description</p>
+"
+          tagName="div"
+        />
+      </div>
+    </div>
+    <div
+      className="req-resp-container"
+    >
+      <ApiRequest
+        accept=""
+        method="GET"
+        parameters={
+          Object {
+            "test": "test",
+          }
+        }
+        path="/test"
+        selectedServer=""
+        specType="rest"
+      />
+      <ApiResponse
+        responses={
+          Object {
+            "200": Object {
+              "test": "test",
+            },
+          }
+        }
+        specType="rest"
+      />
+    </div>
+  </div>
+</div>
+`;
