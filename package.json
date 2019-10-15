@@ -1,6 +1,6 @@
 {
   "name": "@wework/wapiti",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React UI for API Documentation supporting OpenAPI and gRPC",
   "keywords": [
     "api",
@@ -38,14 +38,18 @@
     "js-yaml": "3.13.1",
     "json-refs": "^3.0.13",
     "marked": "0.7.0",
-    "protobufjs":"6.8.8",
-    "react": "16.6.3",
-    "react-dom": "16.6.3",
+    "protobufjs": "6.8.8",
+    "react": "16.9.0",
     "react-dangerous-html": "1.0.0",
+    "react-dom": "16.9.0",
     "react-scripts": "3.0.1",
     "swagger2openapi": "^5.3.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
     "@types/enzyme": "3.1.15",
     "@types/jest": "23.3.10",
     "@types/lodash": "4.14.123",
@@ -65,8 +69,7 @@
     "source-map-explorer": "1.8.0",
     "typescript": "3.5"
   },
-  "resolutions": {
-  },
+  "resolutions": {},
   "engines": {
     "node": ">=10.0.0 && <=12",
     "npm": ">=6.0.0 ",
