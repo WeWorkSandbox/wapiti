@@ -21,7 +21,7 @@ interface WapitiState {
     selectedServer: string;
 }
 
-export class Wapiti extends React.Component<WapitiProps, WapitiState> {
+export default class Wapiti extends React.Component<WapitiProps, WapitiState> {
 
   constructor(props: WapitiProps) {
     super(props);
