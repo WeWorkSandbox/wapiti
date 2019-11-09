@@ -1,15 +1,13 @@
-import * as React from 'react';
-import './JsonTree.css';
+import React, {Component} from 'react';
+import cx from 'classnames';
 
-interface JsonTreeProps {
-    data: any;
-};
-  
-export class JsonTree extends React.Component<JsonTreeProps> {
+import style from './JsonTree.scss';
+
+export class JsonTree extends Component {
 
   render() {
     return (
-      <div className="tree">
+      <div className={cx(style["tree"])}>
         {this.generateTree(this.props.data)}
       </div>
     )
@@ -17,25 +15,26 @@ export class JsonTree extends React.Component<JsonTreeProps> {
 
   generateTree(data){
     if (data===null){
-      return (<div className="null" style={{ display: 'inline' }}>null</div>)
+      return (<div className={cx(style["null"])} style={{ display: 'inline' }}>null</div>)
     }
     if (typeof data === 'object'){
       let detailType = Array.isArray(data)?"array":"pure_object";
       if (Object.keys(data).length===0){
         return Array.isArray(data)?'[ ]':'{ }'
       }
-      return (<>
-      <div className={'left-bracket expanded ' +  (detailType==='array'?'array':'object')} onClick={this.toggleExpand} > {detailType==='array'?'[':'{'}</div>
-        <div className="inside-bracket">
+      return (<React.Fragment>
+      <div className={cx(style['left-bracket'], 'expanded', (detailType==='array'?'array':'object'))} onClick={this.toggleExpand} > {detailType==='array'?'[':'{'}</div>
+        <div className={cx(style["inside-bracket"])}>
         {Object.keys(data).map(key =>
-          (<div className="item"> {detailType==='pure_object'? key + ':':''} {this.generateTree(data[key])}</div>)
+          (<div className={cx(style["item"])}> {detailType==='pure_object'? key + ':':''} {this.generateTree(data[key])}</div>)
         )}
         </div>
-      <div className="right-bracket">{detailType==='array'?']':'}'}</div>
-      </>)
+      <div className={cx(style["right-bracket"])}>{detailType==='array'?']':'}'}</div>
+      </React.Fragment>)
     }
     else{
-      return typeof data==='string'? <span className={typeof data}> "{data}"</span> : <span className={typeof data}>{data}</span>;
+      let to = typeof data;
+      return to==='string'? <span className={typeof data}> "{data}"</span> : <span className={cx(style[{to}])}>{data}</span>;
     }
 
   }

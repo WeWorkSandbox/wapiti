@@ -11,7 +11,7 @@ import {
   Type,
 } from 'protobufjs';
 
-export function walkServices(root: Root, onService: (service: Service, serviceName: string) => void) {
+export function walkServices(root, onService: (service, serviceName) => void) {
 
   walkNamespace(root, namespace => {
     const nestedNamespaceTypes = namespace.nested;
@@ -31,12 +31,11 @@ export function walkServices(root: Root, onService: (service: Service, serviceNa
 
           const fullyQualifiedServiceName = serviceName.join('.');
 
-          onService(nestedType as Service, fullyQualifiedServiceName);
+          onService(nestedType, fullyQualifiedServiceName);
         }
       });
     }
   });
-
 //  Object.keys(ast)
 //    .forEach(serviceName => {
 //      const lookupType = root.lookup(serviceName);
@@ -47,7 +46,7 @@ export function walkServices(root: Root, onService: (service: Service, serviceNa
 //    });
 }
 
-export function walkNamespace(root: Root, onNamespace: (namespace: Namespace) => void, parentNamespace?: Namespace) {
+export function walkNamespace(root, onNamespace: (namespace) => void, parentNamespace) {
   const nestedType = (parentNamespace && parentNamespace.nested) || root.nested;
 
   if (nestedType) {
@@ -58,14 +57,14 @@ export function walkNamespace(root: Root, onNamespace: (namespace: Namespace) =>
       }
       const nestedNamespace = root.lookup(typeName);
       if (nestedNamespace && isNamespace(nestedNamespace)) {
-        onNamespace(nestedNamespace as Namespace);
-        walkNamespace(root, onNamespace, nestedNamespace as Namespace);
+        onNamespace(nestedNamespace);
+        walkNamespace(root, onNamespace, nestedNamespace);
       }
     });
   }
 }
 
-export function serviceByName(root: Root, serviceName: string): ProtoService {
+export function serviceByName(root, serviceName) {
   if (!root.nested) {
     throw new Error('Empty PROTO!');
   }
@@ -74,7 +73,7 @@ export function serviceByName(root: Root, serviceName: string): ProtoService {
   return root.lookupService(serviceLeaf.fullName);
 }
 
-function isNamespace(lookupType: ReflectionObject) {
+function isNamespace(lookupType) {
   if (
     (lookupType instanceof Namespace) &&
     !(lookupType instanceof Service) &&

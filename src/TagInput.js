@@ -1,21 +1,14 @@
-import * as React from 'react';
-import './TagInput.css';
+import React, {Component} from 'react';
+import cx from 'classnames';
 
-interface TagInputProps {
-    theClassName: string;
-    theStyle: any;
-    dataPtype: string;
-    dataPname: string;
-    dataArray: string;
-    placeholder: string;
-};
+import style from './TagInput.scss';
   
-export class TagInput extends React.Component<TagInputProps> {
+export class TagInput extends Component {
 
   render() {
     return (
-    <div className={this.props.theClassName + ' tags'} style={this.props.theStyle} tabIndex={0} contentEditable={true}>
-      <input type="text" className='editor' onPaste={this.afterPaste} onKeyDown={this.afterKeyDown} placeholder={this.props.placeholder} />
+    <div className={cx(style[this.props.theClassName], style['tags'])} style={this.props.theStyle} tabIndex={0} contentEditable={true}>
+      <input type="text" className={cx(style['editor'])} onPaste={this.afterPaste} onKeyDown={this.afterKeyDown} placeholder={this.props.placeholder} />
     </div>)
   }
 

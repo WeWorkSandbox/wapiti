@@ -59,37 +59,30 @@
   font-family:var(--font-regular);
 }
 
-        .section-gap {
-          padding: 24px 8px 8px 8px;
-        }
+.section-gap {
+  padding: 24px 8px 8px 8px;
+}
 
-        .logo {
-          height:36px;
-          width:36px;
-          margin-left:5px;
-        }
-        .only-large-screen-flex,
-        .only-large-screen{
-          display:none;
-        }
-        .header-title{
-          font-size:calc(var(--title-font-size) + 8px); padding:0 8px;
-        }
-        .tag{
-          text-transform: uppercase;
-        }
+.only-large-screen-flex,
+.only-large-screen{
+  display:none;
+}
 
-        @media only screen and (min-width: 768px){
-          .only-large-screen{
-            display:block;
-          }
-          .only-large-screen-flex{
-            display:flex;
-          }
-          .body-container{
-            margin:0 16px;
-          }
-          .section-gap {
-            padding: 24px 24px 8px 24px;
-          }
-        }
+.tag{
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 768px){
+  .only-large-screen{
+      display:block;
+  }
+  .only-large-screen-flex{
+      display:flex;
+  }
+  .body-container{
+      margin:0 16px;
+  }
+  .section-gap {
+      padding: 24px 24px 8px 24px;
+  }
+}

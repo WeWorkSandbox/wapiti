@@ -1,3 +1,15 @@
+    .regular-font{ font-family:var(--font-regular); }
+    .mono-font{ font-family:var(--font-mono); }
+    .title{ font-size: 30px;font-weight:normal }
+    .sub-title{ font-size: 20px;}
+    .req-res-title {
+      font-family:var(--font-regular);
+      font-size:16px;
+      font-weight:bold;
+      margin-bottom:8px;
+    }
+
+    .tiny-title { font-size:13px; font-weight:bold; }
     .regular-font-size{ font-size:var(--regular-font-size);}
     .small-font-size{ font-size:var(--small-font-size);}
     h1{ font-family:var(--font-regular); font-size:20px; letter-spacing:normal; }
@@ -26,13 +38,13 @@
     }
     */
     .m-markdown,
-    .m-markdown-small{
+    .m-markdownSmall{
       display:block;
     }
     .m-markdown li,
     .m-markdown p,
     .m-markdown span{
-        line-height:28px;
+        line-height:18px;
         font-size:14px;
     }
     .m-markdown-small p,

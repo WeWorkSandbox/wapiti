@@ -1,38 +1,30 @@
-import * as React from 'react';
+import React, {Component} from 'react';
+import cx from 'classnames';
 import marked from 'marked';
 import DangerousHTML from 'react-dangerous-html';
-import { schemaToModel, getTypeInfo,  generateExample, removeCircularReferences} from './utils/common-utils.js';
+import {schemaToModel, getTypeInfo,  generateExample, removeCircularReferences} from './utils/common-utils.js';
 import {TagInput} from './TagInput';
 import {SchemaTree} from './SchemaTree';
-import './CommonStyles.css'
-import './ApiRequest.css'
-  
-interface ApiRequestProps {
-    specType: string;
-    selectedServer: string;
-    method: string;
-    path: string;
-    parameters: any[];
-    requestBody: any;
-    accept: string;
-};
 
-interface ApiRequestState {
-   exampleTabActive: boolean; 
-   mimeTypeSelected: string;
-};
+import style from './ApiRequest.scss';
+import stylee from './EndPoint.scss';
+import stylefo from './FontStyles.scss';
+import stylet from './TableStyles.scss';
+import stylett from './TabStyles.scss';
+import stylef from './FlexStyles.scss';
+import stylei from './InputStyles.scss';
 
-export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState> {
+export class ApiRequest extends Component {
 
-  constructor(props: ApiRequestProps) {
+  constructor(props) {
     super(props);
     this.state = { exampleTabActive: true, mimeTypeSelected: 'none' };
   }
 
   render() {
     return (
-    <div className="request col regular-font request-panel">
-      <div className="title">REQUEST</div>
+    <div className={cx(stylee["request"],stylef["col"], stylefo["regular-font"], style["request-panel"])}>
+      <div className={cx(style["title"])}>REQUEST</div>
       {this.inputParametersTemplate('path')}
       {this.inputParametersTemplate('query')}
       {this.requestBodyTemplate()}
@@ -54,7 +46,7 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
     else if (paramType==='cookie'){ title = "COOKIES"}
 
 
-    const tableRows : any[] = [];
+    const tableRows = [];
     for (const param of filteredParams) {
       if (!param.schema){
         continue;
@@ -74,13 +66,13 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
          inputVal = paramSchema.default;
       }
 
-      tableRows.push((<>
+      tableRows.push((<React.Fragment>
       <tr>
         <td style={{ minWidth: '100px'}}>
-          <div className="param-name">
+          <div className={cx(style["param-name"])}>
             {param.required && <span style={{ color: 'orangered' }}>*</span>}{param.name}
           </div>
-          <div className="param-type">
+          <div className={cx(style["param-type"])}>
           {paramSchema.type==='array' ? paramSchema.array
           : paramSchema.type + (paramSchema.format ? '\u00a0' + paramSchema.format : '')}
           </div>
@@ -95,14 +87,14 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
             dataArray="true"
             placeholder="add-multiple\u23ce"
           ></TagInput>)
-          :(<input type="text" spellCheck={false} style={{ width: '100%' }} className="request-param"
+          :(<input type="text" spellCheck={false} style={{ width: '100%' }} className={cx(style["request-param"])}
             value={inputVal}/>)}
         </td>
         <td>
-          <div className="param-constraint"><>
-            {paramSchema.constrain && (<>{paramSchema.constrain}<br/></>)}
-            {paramSchema.allowedValues && (<>{paramSchema.allowedValues}</>)}
-          </></div>
+          <div className={cx(style["param-constraint"])}><div>
+            {paramSchema.constrain && (<div>{paramSchema.constrain}<br/></div>)}
+            {paramSchema.allowedValues && (<div>{paramSchema.allowedValues}</div>)}
+          </div></div>
         </td>
       </tr>
       {param.description && (
@@ -111,22 +103,22 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
 
           </td>
           <td colSpan={2} style={{ border: 'none', marginTop: '0', padding: '0 5px' }}>
-            <span className="m-markdown-small"><DangerousHTML html={marked(param.description)} /></span>
+            <span className={cx(stylefo["m-markdown-small"])}><DangerousHTML html={marked(param.description)} /></span>
           </td>
         </tr>
         )}
-       </>
+       </React.Fragment>
       ))
     }
 
-    return (<>
-    <div className="table-title top-gap">{title}</div>
+    return (<React.Fragment>
+    <div className={cx(stylet["table-title"], style["top-gap"])}>{title}</div>
     <div style={{ display: 'block', overflowX: 'auto',  maxWidth: '100%' }}>
-      <table className="m-table" style={{ width: '100%', wordBreak: 'break-word' }}>
+      <table className={cx(stylet["m-table"])} style={{ width: '100%', wordBreak: 'break-word' }}>
         {tableRows}
       </table>
     </div>
-    </>
+    </React.Fragment>
     )
   }
 
@@ -147,14 +139,14 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
       return '';
     }
 
-    let mimeReqCount=0;
-    let shortMimeTypes={};
-    let bodyDescrHtml = this.props.requestBody.description? (<div className="m-markdown"> <DangerousHTML html={marked(this.props.requestBody.description)} /></div>):'';
-    let textareaExampleHtml:any[] = [];
-    var formDataHtml: any;
-    const formDataTableRows: any[] = [];
-    let isFormDataPresent   = false;
-    let reqSchemaTree="";
+    let mimeReqCount = 0;
+    let shortMimeTypes = {};
+    let bodyDescrHtml = this.props.requestBody.description? (<div className={stylefo["m-markdown"]}> <DangerousHTML html={marked(this.props.requestBody.description)} /></div>):'';
+    let textareaExampleHtml = [];
+    var formDataHtml;
+    const formDataTableRows = [];
+    let isFormDataPresent = false;
+    let reqSchemaTree = "";
 
     let content = this.props.requestBody.content;
 
@@ -176,7 +168,7 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
           //Remove Circular references from RequestBody json-schema
           mimeReqObj.schema = JSON.parse(JSON.stringify(mimeReqObj.schema, removeCircularReferences()));
         }
-        catch{
+        catch (err){
           console.error("Unable to resolve circular refs in schema", mimeReqObj.schema);
           return;
         }
@@ -188,7 +180,7 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
           mimeReq, "text"
         );
         textareaExampleHtml[mimeReq] = (<textarea
-            className={'textarea mono request-body-param '+ shortMimeTypes[mimeReq]}
+            className={cx(style['textarea'], stylei['textarea'], stylei['mono'], stylei['request-body-param'], shortMimeTypes[mimeReq])}
             spellCheck={false}
             style={{ resize: 'vertical', display: shortMimeTypes[mimeReq]==='json'?'block':'none' }}
             value={reqExample[0].exampleValue} />)
@@ -199,11 +191,11 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
           const fieldSchema = mimeReqObj.schema.properties[fieldName];
           const fieldType = fieldSchema.type;
           const arrayType = fieldSchema.type==='array'?fieldSchema.items.type:'';
-          formDataTableRows.push((<>
+          formDataTableRows.push((<div>
           <tr>
             <td style={{minWidth: '100px' }}>
-              <div className="param-name">{fieldName}</div>
-              <div className="param-type">
+              <div className={cx(style["param-name"])}>{fieldName}</div>
+              <div className={cx(style["param-type"])}>
               {fieldType==='array' ? '{fieldType} of {arrayType}'
               : fieldType + (fieldSchema.format ? '\u00a0' + fieldSchema.format : '')}
               </div>
@@ -221,30 +213,30 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
               :(<input
                 spellCheck={false}
                 type="{fieldSchema.format==='binary'?'file':'text'}"
-                style={{ width: '100%' }} className="request-form-param"
+                style={{ width: '100%' }} className={cx(style["request-form-param"])}
                 />
               )}
 
             </td>
             <td>
-              <div className="param-constraint"></div>
+              <div className={cx(style["param-constraint"])}></div>
             </td>
           </tr>
           {fieldSchema.description?(
             <tr>
               <td style={{ border: 'none' }}></td>
               <td colSpan={2} style={{ border: 'none', marginTop:0, padding: '0 5px' }}>
-                <span className="m-markdown-small"><DangerousHTML html={marked(fieldSchema.description)} /></span>
+                <span className={cx(stylec["m-markdown-small"])}><DangerousHTML html={marked(fieldSchema.description)} /></span>
               </td>
             </tr>):''}
-           </>
+           </div>
         ))
         }
 
 
         formDataHtml = (
-        <form className="{shortMimeTypes[mimeReq]}"> {/* onSubmit={{ event.preventDefault() }}> */}
-          <table style={{ width: '100%' }} className="m-table">
+        <form className={cx(style["{shortMimeTypes[mimeReq]}"])}> {/* onSubmit={{ event.preventDefault() }}> */}
+          <table style={{ width: '100%' }} className={cx(stylet["m-table"])}>
             {formDataTableRows}
           </table>
         </form>);
@@ -256,7 +248,7 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
     if (this.props.specType === 'grpc') {
       bodyTitle = this.props.requestBody.objType
       textareaExampleHtml['protobuf'] = (<textarea
-            className="textarea mono request-body-param json"
+            className={cx(style['textarea'],stylei['textarea'],stylei["mono"], stylei["request-body-param"], "json")}
             spellCheck={false}
             style={{ resize: 'vertical', display: 'block' }}
             value={JSON.stringify(this.props.requestBody.mock, undefined, 2)} />)
@@ -273,36 +265,36 @@ export class ApiRequest extends React.Component<ApiRequestProps, ApiRequestState
     let styleExample=this.state.exampleTabActive?{ flex: 1 }:{ flex: 1, display: 'none' }
     let styleModel=this.state.exampleTabActive?{ flex: 1, display: 'none' }:{ flex: 1 }
 
-    return (<>
-      <div className={'table-title top-gap ' + (isFormDataPresent?'form_data':'body_data')}> {bodyTitle} </div>
+    return (<React.Fragment>
+      <div className={cx(stylet['table-title'], style['top-gap'], style[(isFormDataPresent?'form_data':'body_data')])}> {bodyTitle} </div>
       {bodyDescrHtml}
       {isFormDataPresent?({formDataHtml})
         :(
-        <div className="tab-panel col" style={{borderWidth: '0',  minHeight: '200px' }}>
-          <div id="tab_buttons" className="tab-buttons row" onClick={this.activateTab}>
-            <button className={'tab-btn'+(this.state.exampleTabActive?' active':'')} id="tab_example">EXAMPLE </button>
-            <button className={'tab-btn'+(this.state.exampleTabActive?'':' active')} id="tab_model">MODEL</button>
+        <div className={cx(stylett["tab-panel"], stylef["col"])} style={{borderWidth: '0',  minHeight: '200px' }}>
+          <div id="tab_buttons" className={cx(stylett["tab-buttons"], stylef["row"])} onClick={this.activateTab}>
+            <button className={cx(style['tab-btn'], style[(this.state.exampleTabActive?'active':'')])} id="tab_example">EXAMPLE </button>
+            <button className={cx(style['tab-btn'], style[(this.state.exampleTabActive?'':'active')])} id="tab_model">MODEL</button>
             <div style={{ flex:1 }}> </div>
             <div style={{ color: 'var(--light-fg)', alignSelf: 'center', fontSize: 'var(--small-font-size)', marginTop: '8px' }}>
               {mimeReqCount===1? Object.keys(shortMimeTypes)[0]
-              : Object.keys(shortMimeTypes).map(k => (<>
+              : Object.keys(shortMimeTypes).map(k => (<div>
                   {shortMimeTypes[k]==='json'? (
                     <input type='radio' name='request_body_type' value={shortMimeTypes[k]} onChange={this.onMimeTypeChange} checked={true} style={{ margin: '0 0 0 8px'}} />
                   )
                   :(
                     <input type='radio' name='request_body_type' value={shortMimeTypes[k]} onChange={this.onMimeTypeChange} style={{margin: '0 0 0 8px'}} />
                   )}
-                </>))}
+                </div>))}
             </div>
           </div>
-          <div id="tab_example" className="tab-content col" style={styleExample} >
+          <div id="tab_example" className={cx(stylett["tab-content"], stylef["col"])} style={styleExample} >
             {textareaExampleHtml[this.state.mimeTypeSelected]}
           </div>
-          <div id="tab_model" className="tab-content col" style={styleModel}>
+          <div id="tab_model" className={cx(stylett["tab-content"], stylef["col"])} style={styleModel}>
             <SchemaTree data={reqSchemaTree}></SchemaTree>
           </div>
         </div>)
-      }</>)
+      }</React.Fragment>)
 
 
   }

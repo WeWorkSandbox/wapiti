@@ -1,34 +1,21 @@
-import * as React from 'react';
+import React, {Component} from 'react';
+import cx from 'classnames';
 import DangerousHTML from 'react-dangerous-html';
 import marked from 'marked';
-import {ProcessSpec, processGrpcSpec} from './utils/parse-utils.js';
+import {ProcessSpec,processGrpcSpec} from './utils/parse-utils.js';
 import {EndPoints} from './EndPoints';
 
-import './FontStyles.css'
-import './InputStyles.css'
-import './FlexStyles.css'
-import './TableStyles.css'
-import './Wapiti.css';
+import stylef from './FontStyles.scss';
+import style from './Wapiti.scss';
 
-interface WapitiProps {
-    specUrl: string;
-    specType: string;
-};
+export class Wapiti extends Component {
 
-interface WapitiState {
-    isLoading: boolean;
-    resolvedSpec: any;
-    selectedServer: string;
-}
-
-export default class Wapiti extends React.Component<WapitiProps, WapitiState> {
-
-  constructor(props: WapitiProps) {
+  constructor(props) {
     super(props);
-    this.state = { isLoading: false, resolvedSpec: undefined, selectedServer: '' };
+    this.state = {};
   }
 
-  loadSpec(specUrl: string, specType: string) {
+  loadSpec(specUrl, specType) {
     let me = this;
     if (!specUrl){
       return;
@@ -40,11 +27,11 @@ export default class Wapiti extends React.Component<WapitiProps, WapitiState> {
     });
 
     if (specType === 'rest') {
-      ProcessSpec(specUrl).then(function(spec){
+       ProcessSpec(specUrl).then(function(spec){
         me.setState({
           isLoading: false,
           resolvedSpec: spec
-        });        
+        });
         if (spec===undefined || spec === null){
           console.error('Unable to resolve the API spec. ');
         }
@@ -70,7 +57,7 @@ export default class Wapiti extends React.Component<WapitiProps, WapitiState> {
         me.setState({
           isLoading: false
         });
-        console.error('Unable to resolve the GRPC spec.. ' + err.message);
+        console.error('Unable to resolve the GRPC spec : ' + err.message);
       });
     }
   }
@@ -81,12 +68,12 @@ export default class Wapiti extends React.Component<WapitiProps, WapitiState> {
 
   render() {
     return (
-      <div className="body-container regular-font">
+      <div className={cx(style["body-container"],stylef["regular-font"])}>
         {/*<slot></slot>*/}
         {this.state.isLoading && (<div style={{textAlign: 'center', margin: '16px'}}>Loading ... </div>)}
         {this.state.resolvedSpec && this.state.resolvedSpec.info && (
-        <div className="section-gap">
-          <div className="title">
+        <div className={cx(style["section-gap"])}>
+          <div className={cx(stylef["title"])}>
             {this.state.resolvedSpec.info.title}
             {this.state.resolvedSpec.info.version && (
               <span style={{ fontSize: 'var(--small-font-size)', fontWeight: 'bold'  }}>
@@ -95,30 +82,30 @@ export default class Wapiti extends React.Component<WapitiProps, WapitiState> {
             )}
           </div>
           {this.state.resolvedSpec.info.description && (
-              <div className='m-markdown regular-font'><DangerousHTML html={marked(this.state.resolvedSpec.info.description)} /></div>
+              <div className={cx(stylef['m-markdown'], stylef["regular-font"])}><DangerousHTML html={marked(this.state.resolvedSpec.info.description)} /></div>
           )}
-        </div>
+          </div>
         )}
         {/*TODO SCheme */}
         {this.state.resolvedSpec && this.state.resolvedSpec.tags && (
-            <>
+            <React.Fragment>
             {this.state.resolvedSpec.tags.map( tag => (
-            <>
-            <div className="sub-title tag regular-font section-gap">{tag.name}</div>
+            <React.Fragment>
+            <div className={cx(stylef["sub-title"],style["tag"],style["section-gap"],stylef["regular-font"])}>{tag.name}</div>
             <div style={{ margin:'4px 20px'}}>
-              <div className='m-markdown regular-font'>{tag.description?<DangerousHTML html={marked(tag.description)}/>:''}</div>
+              <div className={cx(stylef["m-markdown"],stylef["regular-font"])}>{tag.description?<DangerousHTML html={marked(tag.description)}/>:''}</div>
             </div>
             <EndPoints
               selectedServer  = "{this.state.selectedServer?this.state.selectedServer:''}"
               paths           = {tag.paths}
               specType        = {this.props.specType}
             ></EndPoints>
-            </>
+            </React.Fragment>
            ))}
-           </>
-        )}
+           </React.Fragment>
+        )}        
         {/*<slot name="footer"></slot>*/}
-      </div> 
+      </div>
     );
   }
 }
