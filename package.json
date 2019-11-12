@@ -1,6 +1,6 @@
 {
   "name": "@wework/wapiti",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React UI for API Documentation supporting OpenAPI and gRPC",
   "keywords": [
     "api",
