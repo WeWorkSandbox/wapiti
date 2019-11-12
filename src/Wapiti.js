@@ -34,11 +34,16 @@ export class Wapiti extends Component {
         });
         if (spec===undefined || spec === null){
           console.error('Unable to resolve the API spec. ');
+          me.setState({
+            isLoading: false,
+            errorSpec: "Unable to resolve the REST API spec"
+          });          
         }
       })
       .catch(function(err) {
         me.setState({
-          isLoading: false
+          isLoading: false,
+          errorSpec: "Could not load the REST API spec"
         });
         console.error('Unable to resolve the API spec.. ' + err.message);
       });
@@ -50,12 +55,17 @@ export class Wapiti extends Component {
           resolvedSpec: spec
         });
         if (spec===undefined || spec === null){
-          console.error('Unable to resolve the GRPC spec. ');
+          console.error('Unable to resolve the GRPC API spec. ');
+          me.setState({
+            isLoading: false,
+            errorSpec: "Unable to resolve the GRPC API spec"
+          });
         }
       })
       .catch(function(err) {
         me.setState({
-          isLoading: false
+          isLoading: false,
+          errorSpec: "Could not load the GRPC API spec"
         });
         console.error('Unable to resolve the GRPC spec : ' + err.message);
       });
@@ -69,8 +79,8 @@ export class Wapiti extends Component {
   render() {
     return (
       <div className={cx(style["body-container"],stylef["regular-font"])}>
-        {/*<slot></slot>*/}
         {this.state.isLoading && (<div style={{textAlign: 'center', margin: '16px'}}>Loading ... </div>)}
+        {!this.state.isLoading && this.state.errorSpec && (<div style={{textAlign: 'center', margin: '16px'}}>{this.state.errorSpec} </div>)}
         {this.state.resolvedSpec && this.state.resolvedSpec.info && (
         <div className={cx(style["section-gap"])}>
           <div className={cx(stylef["title"])}>
@@ -104,7 +114,6 @@ export class Wapiti extends Component {
            ))}
            </React.Fragment>
         )}        
-        {/*<slot name="footer"></slot>*/}
       </div>
     );
   }

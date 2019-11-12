@@ -8,11 +8,8 @@ export async function processGrpcSpec(grpcSpec) {
 
   let tags=[];
 
-  window.alert("PASSE LA")
-
   const root = await load(grpcSpec);
   let totalPathCount = 0;
-  window.alert("PASSE DONE ")
 
   walkServices(root, (service, serviceName) => {
     let tagObj = {

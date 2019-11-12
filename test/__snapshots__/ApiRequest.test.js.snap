@@ -1,0 +1,360 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApiRequest renders with rest GET 1`] = `
+<div
+  className="EndPoint_request__2trZ0 FlexStyles_col__I-jKu FontStyles_regular-font__3G8fz"
+>
+  <div
+    className="ApiRequest_title__3-TdX"
+  >
+    REQUEST
+  </div>
+  
+  <div
+    className="TableStyles_table-title__1AOn2 ApiRequest_top-gap__BaIt7"
+  >
+    QUERY-STRING PARAMETERS
+  </div>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "maxWidth": "100%",
+        "overflowX": "auto",
+      }
+    }
+  >
+    <table
+      className="TableStyles_m-table__3gZQn"
+      style={
+        Object {
+          "width": "100%",
+          "wordBreak": "break-word",
+        }
+      }
+    >
+      <tr>
+        <td
+          style={
+            Object {
+              "minWidth": "100px",
+            }
+          }
+        >
+          <div
+            className="ApiRequest_param-name__1glVC"
+          >
+            <span
+              style={
+                Object {
+                  "color": "orangered",
+                }
+              }
+            >
+              *
+            </span>
+            limit
+          </div>
+          <div
+            className="ApiRequest_param-type__1sF6r"
+          >
+            integer int32
+          </div>
+        </td>
+        <td
+          style={
+            Object {
+              "minWidth": "100px",
+            }
+          }
+        >
+          <input
+            className=""
+            spellCheck={false}
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+            type="text"
+            value=""
+          />
+        </td>
+        <td>
+          <div
+            className="ApiRequest_param-constraint__1ubbP"
+          >
+            <div>
+              
+              
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td
+          style={
+            Object {
+              "border": "none",
+            }
+          }
+        />
+        <td
+          colSpan={2}
+          style={
+            Object {
+              "border": "none",
+              "marginTop": "0",
+              "padding": "0 5px",
+            }
+          }
+        >
+          <span
+            className="FontStyles_m-markdown-small__309YV"
+          >
+            <div
+              className=""
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "<p>How many items to return at one time (max 100)</p>
+",
+                }
+              }
+            />
+          </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+  
+  
+</div>
+`;
+
+exports[`ApiRequest renders with rest POST 1`] = `
+<div
+  className="EndPoint_request__2trZ0 FlexStyles_col__I-jKu FontStyles_regular-font__3G8fz"
+>
+  <div
+    className="ApiRequest_title__3-TdX"
+  >
+    REQUEST
+  </div>
+  
+  
+  <div
+    className="TableStyles_table-title__1AOn2 ApiRequest_top-gap__BaIt7"
+  >
+     
+    BODY DATA 
+     
+  </div>
+  <div
+    className="FontStyles_m-markdown__3Lf4E"
+  >
+     
+    <div
+      className=""
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "<p>description</p>
+",
+        }
+      }
+    />
+  </div>
+  <div
+    className="TabStyles_tab-panel__2Fvjy FlexStyles_col__I-jKu"
+    style={
+      Object {
+        "borderWidth": "0",
+        "minHeight": "200px",
+      }
+    }
+  >
+    <div
+      className="TabStyles_tab-buttons__2iK96 FlexStyles_row__1sfCX"
+      id="tab_buttons"
+      onClick={[Function]}
+    >
+      <button
+        className="ApiRequest_tab-btn__2-ody ApiRequest_active__3AS09"
+        id="tab_example"
+      >
+        EXAMPLE 
+      </button>
+      <button
+        className="ApiRequest_tab-btn__2-ody"
+        id="tab_model"
+      >
+        MODEL
+      </button>
+      <div
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+         
+      </div>
+      <div
+        style={
+          Object {
+            "alignSelf": "center",
+            "color": "var(--light-fg)",
+            "fontSize": "var(--small-font-size)",
+            "marginTop": "8px",
+          }
+        }
+      >
+        application/json
+      </div>
+    </div>
+    <div
+      className="TabStyles_tab-content__1ABmh FlexStyles_col__I-jKu"
+      id="tab_example"
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <textarea
+        className="ApiRequest_textarea__33WwG InputStyles_mono__2pBIB json"
+        spellCheck={false}
+        style={
+          Object {
+            "display": "block",
+            "resize": "vertical",
+          }
+        }
+        value="{
+  \\"id\\": 0,
+  \\"name\\": \\"string\\",
+  \\"tag\\": \\"string\\"
+}"
+      />
+    </div>
+    <div
+      className="TabStyles_tab-content__1ABmh FlexStyles_col__I-jKu"
+      id="tab_model"
+      style={
+        Object {
+          "display": "none",
+          "flex": 1,
+        }
+      }
+    >
+      <div
+        className="SchemaTree_tree__3uHJX"
+      >
+        <div
+          className="SchemaTree_left-bracket__1zUyS expanded object"
+          onClick={[Function]}
+        >
+           
+          {
+        </div>
+        
+        <div
+          className="SchemaTree_inside-bracket__18QCD obj-content-part"
+        >
+          <div
+            className="SchemaTree_item__tdCky"
+          >
+             
+            <span
+              className="SchemaTree_item-key__4PIkl"
+            >
+              id*:
+            </span>
+            <span
+              className="SchemaTree_item-value__1L0kd"
+            >
+              <div
+                className="SchemaTree_item-type__3qFrl SchemaTree_inte__JH8Hl"
+              >
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p>integer int64</p>
+",
+                    }
+                  }
+                />
+              </div>
+              
+            </span>
+          </div>
+          <div
+            className="SchemaTree_item__tdCky"
+          >
+             
+            <span
+              className="SchemaTree_item-key__4PIkl"
+            >
+              name*:
+            </span>
+            <span
+              className="SchemaTree_item-value__1L0kd"
+            >
+              <div
+                className="SchemaTree_item-type__3qFrl SchemaTree_stri__TcqoB"
+              >
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p>string</p>
+",
+                    }
+                  }
+                />
+              </div>
+              
+            </span>
+          </div>
+          <div
+            className="SchemaTree_item__tdCky"
+          >
+             
+            <span
+              className="SchemaTree_item-key__4PIkl"
+            >
+              tag:
+            </span>
+            <span
+              className="SchemaTree_item-value__1L0kd"
+            >
+              <div
+                className="SchemaTree_item-type__3qFrl SchemaTree_stri__TcqoB"
+              >
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p>string</p>
+",
+                    }
+                  }
+                />
+              </div>
+              
+            </span>
+          </div>
+        </div>
+        <div
+          className="obj-content-part"
+        >
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</div>
+`;

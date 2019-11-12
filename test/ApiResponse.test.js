@@ -1,10 +1,11 @@
-import * as React from 'react';
-import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
-import { ApiResponse } from '../ApiResponse';
+import React from 'react';
+import {ApiResponse} from '../build/wapiti.module';
+import renderer from 'react-test-renderer';
 
-const theResponses = {
-  "200": {
+describe('ApiResponse', () => {
+
+  const theResponses = {
+    "200": {
       description: "description",
       content: {
         "application/json": {
@@ -26,17 +27,21 @@ const theResponses = {
            }
         }
       }
-   }
-}
+     }
+  }
 
-describe('ApiResponse', () => {
-  it('renders with rest', () => {
-    let wrapper = shallow(<ApiResponse
+  const component = renderer.create(
+    <ApiResponse
         responses={theResponses}
         specType="rest"
-      ></ApiResponse>
-    );
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+     ></ApiResponse>
+  );
+
+  let tree;
+
+  it('renders with rest', () => {
+    tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
 });

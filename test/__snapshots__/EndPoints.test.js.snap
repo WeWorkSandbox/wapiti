@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EndPoints renders with rest 1`] = `
+Array [
+  <span />,
+  <div
+    className="Endpoint_m-endpoint__2nB-9 FontStyles_regular-font__3G8fz"
+  >
+    <div
+      className="Endpoint_head__DuPOZ"
+      onClick={[Function]}
+    >
+      <div
+        className="Endpoint_method__10Wmy"
+      >
+         
+         
+      </div>
+      <div
+        className="Endpoint_path__2RJZJ"
+      >
+         
+         
+      </div>
+      <div
+        className="Endpoint_only-large-screen__18TAV"
+        style={
+          Object {
+            "flex": "1",
+            "minWidth": "60px",
+          }
+        }
+      />
+      <div
+        className="Endpoint_m-markdown-small__9vYUT Endpoint_descr__3BSCz"
+      >
+         
+        
+      </div>
+    </div>
+  </div>,
+  <span />,
+  <div
+    className="Endpoint_m-endpoint__2nB-9 FontStyles_regular-font__3G8fz"
+  >
+    <div
+      className="Endpoint_head__DuPOZ"
+      onClick={[Function]}
+    >
+      <div
+        className="Endpoint_method__10Wmy"
+      >
+         
+         
+      </div>
+      <div
+        className="Endpoint_path__2RJZJ"
+      >
+         
+         
+      </div>
+      <div
+        className="Endpoint_only-large-screen__18TAV"
+        style={
+          Object {
+            "flex": "1",
+            "minWidth": "60px",
+          }
+        }
+      />
+      <div
+        className="Endpoint_m-markdown-small__9vYUT Endpoint_descr__3BSCz"
+      >
+         
+        
+      </div>
+    </div>
+  </div>,
+]
+`;

@@ -1,0 +1,262 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApiResponse renders with rest 1`] = `
+<div
+  className="EndPoint_response__160mj FlexStyles_col__I-jKu FontStyles_regular-font__3G8fz"
+>
+  <div
+    className="ApiResponse_title__1DNjd"
+  >
+    RESPONSE
+  </div>
+  <div
+    className="ApiResponse_resp-head__3i2J1 ApiResponse_top-gap__1l5sj"
+  >
+    <span
+      className="resp-status"
+    >
+      200
+      :
+    </span>
+    <span
+      className="ApiResponse_resp-descr__2s6xI"
+    >
+      description
+    </span>
+    
+  </div>
+  <div
+    className="TabStyles_tab-panel__2Fvjy FlexStyles_col__I-jKu"
+    style={
+      Object {
+        "borderWidth": "0",
+        "minHeight": "200px",
+      }
+    }
+  >
+    <div
+      className="TabStyles_tab-buttons__2iK96 FlexStyles_row__1sfCX"
+      id="200_application/json_tab-buttons"
+      onClick={[Function]}
+    >
+      <button
+        className="ApiResponse_tab-btn__beAz0 ApiResponse_active__38hjS"
+        id="200_application/json_example"
+      >
+        EXAMPLE
+      </button>
+      <button
+        className="ApiResponse_tab-btn__beAz0"
+        id="200_application/json_model"
+      >
+        MODEL
+      </button>
+      <div
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "alignSelf": "center",
+            "fontSize": "var(--small-font-size)",
+          }
+        }
+      >
+         
+        application/json
+         
+      </div>
+    </div>
+    <div
+      className="TabStyles_tab-content__1ABmh FlexStyles_col__I-jKu"
+      id="200_application/json_example"
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <div
+        className="JsonTree_tree__wo3Ex"
+      >
+        <div
+          className="JsonTree_left-bracket__TJZJV expanded object"
+          onClick={[Function]}
+        >
+           
+          {
+        </div>
+        <div
+          className="JsonTree_inside-bracket__2mbK-"
+        >
+          <div
+            className=""
+          >
+             
+            id:
+             
+            <span
+              className=""
+            >
+              0
+            </span>
+          </div>
+          <div
+            className=""
+          >
+             
+            name:
+             
+            <span
+              className="string"
+            >
+               "
+              string
+              "
+            </span>
+          </div>
+          <div
+            className=""
+          >
+             
+            tag:
+             
+            <span
+              className="string"
+            >
+               "
+              string
+              "
+            </span>
+          </div>
+        </div>
+        <div
+          className=""
+        >
+          }
+        </div>
+      </div>
+    </div>
+    <div
+      className="TabStyles_tab-content__1ABmh FlexStyles_col__I-jKu"
+      id="200_application/json_model"
+      style={
+        Object {
+          "display": "none",
+          "flex": 1,
+        }
+      }
+    >
+      <div
+        className="SchemaTree_tree__3uHJX"
+      >
+        <div
+          className="SchemaTree_left-bracket__1zUyS expanded object"
+          onClick={[Function]}
+        >
+           
+          {
+        </div>
+        
+        <div
+          className="SchemaTree_inside-bracket__18QCD obj-content-part"
+        >
+          <div
+            className="SchemaTree_item__tdCky"
+          >
+             
+            <span
+              className="SchemaTree_item-key__4PIkl"
+            >
+              id*:
+            </span>
+            <span
+              className="SchemaTree_item-value__1L0kd"
+            >
+              <div
+                className="SchemaTree_item-type__3qFrl SchemaTree_inte__JH8Hl"
+              >
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p>integer int64</p>
+",
+                    }
+                  }
+                />
+              </div>
+              
+            </span>
+          </div>
+          <div
+            className="SchemaTree_item__tdCky"
+          >
+             
+            <span
+              className="SchemaTree_item-key__4PIkl"
+            >
+              name*:
+            </span>
+            <span
+              className="SchemaTree_item-value__1L0kd"
+            >
+              <div
+                className="SchemaTree_item-type__3qFrl SchemaTree_stri__TcqoB"
+              >
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p>string</p>
+",
+                    }
+                  }
+                />
+              </div>
+              
+            </span>
+          </div>
+          <div
+            className="SchemaTree_item__tdCky"
+          >
+             
+            <span
+              className="SchemaTree_item-key__4PIkl"
+            >
+              tag:
+            </span>
+            <span
+              className="SchemaTree_item-value__1L0kd"
+            >
+              <div
+                className="SchemaTree_item-type__3qFrl SchemaTree_stri__TcqoB"
+              >
+                <div
+                  className=""
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "<p>string</p>
+",
+                    }
+                  }
+                />
+              </div>
+              
+            </span>
+          </div>
+        </div>
+        <div
+          className="obj-content-part"
+        >
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
